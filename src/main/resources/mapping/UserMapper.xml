@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyanzz.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="UserInfo">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+    </resultMap>
+    <insert id="insert" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into userInfo ( userName, address,gender)
+        values (#{userName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},#{gender,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into userInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                userName,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="findAllUser" parameterType="userInfoForm" resultType="java.util.List" resultMap="BaseResultMap">
+        select * from userInfo
+    </select>
+
+    <select id="findByGender" parameterType="userInfoForm" resultType="java.util.List" resultMap="BaseResultMap">
+        select * from userInfo WHERE 1=1
+        <if test="gender != null">
+            AND gender = #{gender}
+        </if>
+    </select>
+
+</mapper>

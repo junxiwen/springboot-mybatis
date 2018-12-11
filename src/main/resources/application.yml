@@ -1,0 +1,17 @@
+server:
+  port: 8008
+  servlet:
+    context-path: /hyzn
+
+
+spring:
+  profiles:
+    active: dev #指定配置文件
+
+# mybatis配置
+mybatis:
+  type-aliases-package: com.hyanzz.po ,com.hyanzz.form.request #  mybatis会自动扫描你指定包下面的javabean,并且默认设置一个别名 默认别名就是类名。不区分大小写
+  mapper-locations: classpath:mapping/*.xml  # 扫描mapper.xml文件
+  configuration:
+    map-underscore-to-camel-case: true #配置驼峰属性自动映射
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句
