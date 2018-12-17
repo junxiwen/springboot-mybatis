@@ -1,11 +1,8 @@
 package com.hyanzz.service;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.hyanzz.form.request.MyRequestForm;
+import com.hyanzz.form.PageBean;
 import com.hyanzz.form.request.UserInfoForm;
 import com.hyanzz.mapper.UserMapper;
-import com.hyanzz.form.PageBean;
 import com.hyanzz.po.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

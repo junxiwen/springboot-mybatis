@@ -24,6 +24,7 @@ public class PageBean<T> {
     // 分页结果
     private List<T> items;
 
+    //根据查询结果list 封装返回数据
     public static PageBean initPageBean(List list){
         //根据查询数据构建PageInfo对象
         PageInfo pageInfo = new PageInfo<>(list);
